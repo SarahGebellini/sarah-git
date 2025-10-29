@@ -1,0 +1,25 @@
+{
+  "name": "Ascensão",
+  "short_name": "Ascensão",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#6171b5",
+  "theme_color": "#f3d197",
+  "orientation": "portrait",
+  "screenshots": [
+    {
+      "src": "./img/logo_360x360v2.png",
+      "sizes": "360x360",
+      "purpose": "any",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "./img/logo_360x360v2.png",
+      "sizes": "360x360",
+      "purpose": "any",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}

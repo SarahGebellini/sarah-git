@@ -1,0 +1,840 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.2rem 5%; /* uso de porcentagem para responsividade */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: background 0.3s ease;
+
+  /* Efeito Glassmorphism */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 100px;
+  width: auto;
+  margin-left: -60px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 1000;
+  font-size: 1.1rem;
+  color: #6171b5;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Efeito de sublinhado no hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f3d197;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.nav-links a:hover {
+  color: #adadad;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* --- Header (Hero Section) --- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 85vh; /* Ocupa a altura total da tela */
+  padding: 100px 2rem 2rem;
+  background: linear-gradient(135deg, #b5c3ff 0%, #f3d197 100%);
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 700px;
+  /* Animação de entrada */
+  animation: fadeInSlideUp 1s ease-out forwards;
+  padding: 2rem 0;
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 0.3rem;
+
+  /* Efeito de texto vazado com fundo gradiente */
+  background: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-content h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.2rem;
+}
+
+.hero-content p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+button {
+  margin-top: 40px;
+  padding: 20px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #6171b5;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button::hover {
+  transform: translateY(-5px);
+  background-color: #4954a3;
+}
+
+/* --- Responsividade para Telas Menores --- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Em um projeto real, aqui entraria o JS para um menu hamburguer */
+    /* Para esta demonstração, vamos apenas esconder os links. */
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+.sobre-nos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 60px 0;
+}
+
+/* Card base */
+.card {
+  width: 80%;
+  max-width: 800px;
+  background: white;
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Barras coloridas no topo */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+/* Cores específicas */
+.card-missao::before {
+  background: #f3d197;
+}
+
+.card-visao::before {
+  background: #b5c3ff;
+}
+
+.card-valores::before {
+  background: #6171b5;
+}
+
+/* Textos */
+.card h2 {
+  font-size: 1.5rem;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.card p,
+.card ul {
+  font-size: 1rem;
+  color: #000000;
+  line-height: 1.6;
+  margin: 0 0 15px;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+.card li {
+  margin-bottom: 8px;
+}
+
+.faq-container {
+  width: 100%;
+  max-width: 885px;
+  margin: 50px auto;
+  margin-bottom: -45px;
+  margin-top: 55px;
+}
+
+.faq-item {
+  background: white; /* Fundo branco como o seu card */
+  color: #000000; /* Texto principal preto */
+  border-radius: 20px; /* Borda arredondada do seu card */
+  padding: 30px 40px; /* Padding do seu card */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra do seu card */
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px; /* Aumentado o espaçamento entre itens */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.faq-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px; /* Altura da barra */
+  width: 100%;
+  background: linear-gradient(135deg, #b5c3ff 0%, #f3d197 100%);
+  border-radius: 20px 20px 0 0; /* Arredondamento igual ao do card */
+}
+
+.faq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0; /* Remove margem extra no header */
+}
+
+.faq-question {
+  font-size: 1.5rem;
+  color: #000000;
+  margin: 0;
+  padding-right: 15px; /* Espaço para o ícone */
+}
+
+.faq-toggle-button {
+  background: none;
+  border: none;
+  color: #6171b5; /* Cor do ícone baseada na cor da barra */
+  font-size: 2rem; /* Aumenta o tamanho para destaque */
+  font-weight: 300;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.faq-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  margin: 10px 0;
+}
+
+.faq-content img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 15px;
+}
+
+.faq-text-content {
+  flex-grow: 1;
+}
+
+.faq-text-content h2 {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.faq-text-content p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+.faq-toggle-button::before {
+  content: "+";
+  transform: translateY(-2px);
+}
+
+.faq-item.expanded {
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+}
+
+.faq-item.expanded .faq-content {
+  max-height: 500px; /* Suficiente para o texto */
+  opacity: 1;
+  margin-top: 20px;
+  padding-top: 20px;
+  /* Linha sutil de separação - baseada na cor do card */
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.faq-item.expanded .faq-toggle-button {
+  color: #6171b5; /* Mantém a cor da barra */
+  transform: rotate(
+    45deg
+  ); /* Gira o '+' para fazer um 'x' (ou use 'x' no content) */
+}
+
+.faq-item.expanded .faq-toggle-button::before {
+  content: "+"; /* Usamos o '+' e o rotate para o efeito 'x' */
+  transform: translateY(-2px);
+}
+
+.faq-content p {
+  font-size: 1rem;
+  color: #000000;
+  line-height: 1.6;
+  margin: 0; /* Remove margem inferior para evitar padding duplo */
+}
+
+.slide {
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagina {
+  width: 170px;
+  height: 500px;
+  margin: 10px;
+  border-radius: 50px;
+  transition: width 0.7s;
+  background: linear-gradient(135deg, #b5c3ff, #6171b5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pagina:hover {
+  width: 300px;
+}
+
+.conteudo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.pagina h2 {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  white-space: normal; /* permite quebra de linha */
+  word-break: break-word; /* se o nome for muito longo, quebra certinho */
+  margin-bottom: 0.5rem;
+  width: 100%;
+  z-index: 2;
+}
+
+.pagina .descricao {
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  height: 0;
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.pagina:hover .descricao {
+  opacity: 1;
+  pointer-events: auto;
+  height: auto;
+  margin-top: 10px;
+}
+
+.header-fale {
+  width: 1465px; /* largura do container */
+  height: 650px; /* altura do container */
+  background: white; /* fundo branco geral */
+  border-radius: 15px; /* cantos arredondados */
+  overflow: hidden; /* impede vazamento de conteúdo */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* sombra suave */
+  display: flex;
+}
+
+/*área amarela*/
+.header-content {
+  width: 100%; /* ocupa 40% do container */
+  background: #f0c375; /* cor azul principal */
+  color: #fff; /* texto branco */
+  padding: 40px; /* espaçamento interno */
+  border-top-right-radius: 60px; /* cantos arredondados à direita */
+  border-bottom-right-radius: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza o texto verticalmente */
+}
+
+.header-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.header-textbox p {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.header-fale::after {
+  content: "";
+  width: 40%; /* lado branco do container */
+  background: #fff;
+  display: block;
+}
+
+.contact-form {
+  width: 60%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  margin-left: 8%;
+}
+
+.grupo-nome {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background: transparent;
+  color: #ffffff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #f0c375;
+}
+
+.contact-form input,
+.grupo-nome input,
+.grupo-nome textarea {
+  border: 2px solid #f0c375;
+  background: transparent;
+  border-radius: 10px;
+  color: #000000;
+  font-size: 1rem;
+}
+
+.grupo-nome textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.contact-form button {
+  background: #f0c375;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #d8a85f;
+}
+
+.grupo-nome label {
+  color: #f0c375;
+  padding: 0 5px;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 1rem;
+  pointer-events: none;
+  transition: 0.3s;
+  background: transparent;
+}
+
+.grupo-nome input:focus ~ label,
+.grupo-nome input:valid ~ label,
+.grupo-nome textarea:focus ~ label,
+.grupo-nome textarea:valid ~ label {
+  top: 0;
+  background-color: #ffffff;
+  font-size: 0.7rem;
+  color: #f0c375;
+  padding: 0 5px;
+}
+
+/* Fundo escurecido */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.938);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Caixa */
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 40px;
+  text-align: center;
+  width: 340px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.35s ease;
+}
+
+/* Ícone */
+.icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 auto 15px;
+}
+
+.icon.success {
+  background-color: #b5c3ff;
+  color: #6171b5;
+}
+
+/* Título e texto */
+.modal h2 {
+  color: #6171b5;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  color: #141414;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+/* Botão */
+.buttons button {
+  background-color: #6171b5;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.buttons button:hover {
+  background-color: #4c5ba3;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* botão modar tema */
+#theme-toggle-button {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  background-color: #6171b5;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 5%;
+}
+
+#theme-toggle-button:hover {
+  background-color: #4954a3;
+}
+
+/* modo escuro */
+body.dark-mode {
+  background-color: #13151f;
+  color: #e0e0e0;
+}
+
+/* Navbar escura */
+body.dark-mode .navbar {
+  background: rgba(18, 18, 18, 0.5); /* Fundo mais escuro com desfoque */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .nav-links a {
+  color: #e0e0e0;
+}
+
+/* Hero Section escura */
+body.dark-mode .hero {
+  background: linear-gradient(135deg, #6171b5 0%, #313673 100%);
+}
+
+body.dark-mode .hero-content h1 {
+  background: #13151f; /* Inverte o efeito de texto vazado */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .hero-content h2,
+body.dark-mode .hero-content p {
+  color: #13151f;
+}
+
+/* Cards escuros */
+body.dark-mode .card {
+  background: #1e1e1e;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .card h2,
+body.dark-mode .card p,
+body.dark-mode .card ul {
+  color: #e0e0e0;
+}
+
+/* Slide de serviços escuro */
+body.dark-mode .slide {
+  background: #13151f;
+}
+
+body.dark-mode .pagina {
+  background: linear-gradient(135deg, #6171b5, #313673);
+}
+
+/* Fale Conosco escuro */
+body.dark-mode .header-fale {
+  background: #13151f;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .header-fale::after {
+  background: #13151f;
+}
+
+body.dark-mode .contact-form {
+  background: #13151f;
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+  color: #e0e0e0;
+  background: transparent;
+}
+
+body.dark-mode .grupo-nome input:valid ~ label,
+body.dark-mode .grupo-nome input:focus ~ label,
+body.dark-mode .grupo-nome textarea:focus ~ label,
+body.dark-mode .grupo-nome textarea:valid ~ label {
+  background-color: #13151f; /* Cor do fundo do label quando sobe */
+}
+
+body.dark-mode .header-content {
+  background: #e1b874; /* Um marrom/dourado escuro */
+  color: #13151f; /* Garante texto claro */
+}
+
+/* Campos de Input e Textarea (Bordas e Labels) */
+body.dark-mode .grupo-nome label {
+  color: #e1b874; /* Cor de destaque clara (azul/ciano claro) */
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .grupo-nome input,
+body.dark-mode .grupo-nome textarea {
+  border: 2px solid #e1b874; /* Borda com a cor de destaque clara */
+}
+
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form textarea:focus {
+  border-color: #e1b874;
+}
+
+body.dark-mode .grupo-nome input:focus ~ label,
+body.dark-mode .grupo-nome input:valid ~ label,
+body.dark-mode .grupo-nome textarea:focus ~ label,
+body.dark-mode .grupo-nome textarea:valid ~ label {
+  color: #e1b874;
+  background-color: #13151f; /* Deve ser a cor do fundo do formulário no dark mode */
+}
+
+/* Botão de Envio do Formulário (cor escura) */
+body.dark-mode .contact-form button {
+  background: #e1b874;
+  color: #13151f;
+}
+
+body.dark-mode .contact-form button:hover {
+  background: #413626; /* Versão mais escura para o hover */
+}
+
+body.dark-mode .faq-item {
+  background: #1e1e1e; /* Fundo escuro do card */
+  color: #e0e0e0; /* Texto principal claro */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra mais forte */
+}
+
+body.dark-mode .faq-item:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .faq-item.expanded {
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .faq-item.expanded .faq-content {
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória clara */
+}
+
+body.dark-mode .faq-question {
+  color: #e0e0e0; /* Pergunta clara */
+}
+
+body.dark-mode .faq-toggle-button {
+  color: #b5c3ff; /* Cor clara para o botão de toggle/ícone */
+}
+
+body.dark-mode .faq-text-content h2 {
+  color: #e0e0e0; /* Título no corpo da resposta claro */
+}
+
+body.dark-mode .faq-text-content p {
+  color: #b0b0b0; /* Cor de texto mais suave para o parágrafo da resposta */
+}
