@@ -8,18 +8,19 @@
   "orientation": "portrait",
   "screenshots": [
     {
-      "src": "./img/logo_360x360v2.png",
+      "src": "./img/logo_360.png",
       "sizes": "360x360",
       "purpose": "any",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "./img/logo_360x360v2.png",
-      "sizes": "360x360",
+      "src": "./img/logo_512.png",
+      "sizes": "512x512",
       "purpose": "any",
       "type": "image/png",
       "form_factor": "narrow"
     }
   ]
 }
+
